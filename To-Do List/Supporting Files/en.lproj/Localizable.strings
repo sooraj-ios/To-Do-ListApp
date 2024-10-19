@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  To-Do List
+
+  Created by Sooraj R on 19/10/24.
+  
+*/
+
+
+"To-Do" = "To-Do";
+"List" = "List";
+"AddNewTask" = "Add New Task";
+"Title" = "Title";
+"Description" = "Description";
+"TaskPriority" = "Task Priority";
+"Low" = "Low";
+"Medium" = "Medium";
+"High" = "High";
+"SelectDueDate" = "Select Due Date";
+"Add" = "Add";
+"Update" = "Update";
+"Delete" = "Delete";
+"TaskAddedSuccessfully" = "Task added successfully!";
+"TaskRemovedSuccessfully" = "Task removed successfully!";
+"TaskUpdatedSuccessfully" = "Task updated successfully!";
+"PleaseEnterTitle" = "Please enter a title";
+"PleaseEnterDescription" = "Please enter description";
+"DueDate" = "Due Date: ";
+

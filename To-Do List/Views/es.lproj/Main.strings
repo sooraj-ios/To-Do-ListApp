@@ -1,0 +1,45 @@
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "6tM-Am-8we"; */
+"6tM-Am-8we.normalTitle" = "Add";
+
+/* Class = "UILabel"; text = "List"; ObjectID = "MOI-DH-k8w"; */
+"MOI-DH-k8w.text" = "List";
+
+/* Class = "UIButton"; normalTitle = "En"; ObjectID = "P8P-Uv-07s"; */
+"P8P-Uv-07s.normalTitle" = "En";
+
+/* Class = "UILabel"; text = "To-Do"; ObjectID = "SJe-6k-Rdf"; */
+"SJe-6k-Rdf.text" = "To-Do";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "W3e-Bu-zji"; */
+"W3e-Bu-zji.placeholder" = "Title";
+
+/* Class = "UILabel"; text = "Add New Task"; ObjectID = "XCD-Yh-OUB"; */
+"XCD-Yh-OUB.text" = "Add New Task";
+
+/* Class = "UILabel"; text = "Task Priority"; ObjectID = "ZzP-Cv-leT"; */
+"ZzP-Cv-leT.text" = "Task Priority";
+
+/* Class = "UITextField"; placeholder = "Description"; ObjectID = "dzD-hX-Ac3"; */
+"dzD-hX-Ac3.placeholder" = "Description";
+
+/* Class = "UILabel"; text = "List"; ObjectID = "ep5-oc-GHg"; */
+"ep5-oc-GHg.text" = "List";
+
+/* Class = "UILabel"; text = "Select Due Date"; ObjectID = "evC-Vd-7Sj"; */
+"evC-Vd-7Sj.text" = "Select Due Date";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "oll-EJ-bov"; */
+"oll-EJ-bov.normalTitle" = "Delete";
+
+/* Class = "UISegmentedControl"; qmT-MX-49a.segmentTitles[0] = "Low"; ObjectID = "qmT-MX-49a"; */
+"qmT-MX-49a.segmentTitles[0]" = "Low";
+
+/* Class = "UISegmentedControl"; qmT-MX-49a.segmentTitles[1] = "Medium"; ObjectID = "qmT-MX-49a"; */
+"qmT-MX-49a.segmentTitles[1]" = "Medium";
+
+/* Class = "UISegmentedControl"; qmT-MX-49a.segmentTitles[2] = "High"; ObjectID = "qmT-MX-49a"; */
+"qmT-MX-49a.segmentTitles[2]" = "High";
+
+/* Class = "UILabel"; text = "To-Do"; ObjectID = "xIg-gW-7LU"; */
+"xIg-gW-7LU.text" = "To-Do";

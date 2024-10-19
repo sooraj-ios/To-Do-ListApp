@@ -122,6 +122,15 @@
                                             <action selector="addNewAction:" destination="NuX-Y7-NJC" eventType="touchUpInside" id="Ktn-rM-XvU"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8P-Uv-07s">
+                                        <rect key="frame" x="295" y="0.0" width="49" height="49"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="tintColor" name="AppPrimaryColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="En">
+                                            <color key="titleColor" name="AppPrimaryColor"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -132,7 +141,11 @@
                                     <constraint firstAttribute="trailing" secondItem="aoc-5S-bgw" secondAttribute="trailing" id="PX9-r0-h4P"/>
                                     <constraint firstItem="aoc-5S-bgw" firstAttribute="leading" secondItem="TBg-Hh-FbS" secondAttribute="leading" id="Pbp-fM-J6l"/>
                                     <constraint firstAttribute="trailing" secondItem="Gqj-Ag-3Bd" secondAttribute="trailing" id="X5u-Op-qx8"/>
+                                    <constraint firstItem="aoc-5S-bgw" firstAttribute="top" secondItem="P8P-Uv-07s" secondAttribute="bottom" id="gmG-dt-M52"/>
+                                    <constraint firstItem="Gqj-Ag-3Bd" firstAttribute="leading" secondItem="P8P-Uv-07s" secondAttribute="trailing" id="m3d-43-ROl"/>
+                                    <constraint firstItem="P8P-Uv-07s" firstAttribute="top" secondItem="TBg-Hh-FbS" secondAttribute="top" id="mbx-tG-i4b"/>
                                     <constraint firstItem="Ajh-ah-bhK" firstAttribute="top" secondItem="TBg-Hh-FbS" secondAttribute="top" id="mts-NK-Wpn"/>
+                                    <constraint firstItem="P8P-Uv-07s" firstAttribute="width" secondItem="P8P-Uv-07s" secondAttribute="height" id="o1d-kd-cqA"/>
                                     <constraint firstAttribute="bottom" secondItem="aoc-5S-bgw" secondAttribute="bottom" id="s7c-99-Pnm"/>
                                     <constraint firstItem="Gqj-Ag-3Bd" firstAttribute="top" secondItem="TBg-Hh-FbS" secondAttribute="top" id="vbB-B9-i2i"/>
                                 </constraints>
@@ -163,6 +176,7 @@
                     </view>
                     <connections>
                         <outlet property="itemsCV" destination="ndR-sx-QBf" id="V2J-qy-elW"/>
+                        <outlet property="languageSelectionButton" destination="P8P-Uv-07s" id="UfV-O7-LWK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="keN-W2-28s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -223,7 +237,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkf-zl-I96">
                                         <rect key="frame" x="0.0" y="173.33333333333331" width="333" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evC-Vd-7Sj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Due Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evC-Vd-7Sj">
                                                 <rect key="frame" x="0.0" y="0.0" width="91.666666666666671" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
@@ -231,6 +245,9 @@
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="SIH-2O-8DO">
                                                 <rect key="frame" x="91.666666666666671" y="0.0" width="241.33333333333331" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="241.33000000000001" id="tc4-zk-vHI"/>
+                                                </constraints>
                                             </datePicker>
                                         </subviews>
                                     </stackView>
@@ -285,10 +302,13 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="6tM-Am-8we" id="hk3-TV-P7t"/>
+                        <outlet property="dateTitle" destination="evC-Vd-7Sj" id="YTg-lW-4fN"/>
                         <outlet property="deleteButton" destination="oll-EJ-bov" id="TNV-kQ-ZvT"/>
                         <outlet property="descField" destination="dzD-hX-Ac3" id="1UL-Yp-o7w"/>
                         <outlet property="dueDatePicker" destination="SIH-2O-8DO" id="L0A-dH-adp"/>
+                        <outlet property="pageTitle" destination="XCD-Yh-OUB" id="j8B-lo-BhZ"/>
                         <outlet property="prioritySegment" destination="qmT-MX-49a" id="pGH-1r-DWW"/>
+                        <outlet property="priorityTitle" destination="ZzP-Cv-leT" id="Smt-Vy-drw"/>
                         <outlet property="titleField" destination="W3e-Bu-zji" id="Oe0-GB-ayK"/>
                     </connections>
                 </viewController>

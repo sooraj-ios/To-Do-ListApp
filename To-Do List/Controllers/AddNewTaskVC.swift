@@ -9,6 +9,9 @@ import UIKit
 
 class AddNewTaskVC: UIViewController {
     // MARK: - IBOUTLETS
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var priorityTitle: UILabel!
+    @IBOutlet weak var dateTitle: UILabel!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var prioritySegment: UISegmentedControl!
@@ -31,9 +34,9 @@ class AddNewTaskVC: UIViewController {
     // MARK: - BUTTON ACTIONS
     @IBAction func addAction(_ sender: UIButton) {
         if titleField.text ?? "" == ""{
-            AppToastView.shared.showToast(message: "Please enter a title", toastType: .warning)
+            AppToastView.shared.showToast(message: LocalizationSystem.sharedInstance.localizedStringForKey(key: "PleaseEnterTitle", comment: ""), toastType: .warning)
         }else if descField.text ?? "" == ""{
-            AppToastView.shared.showToast(message: "Please enter description", toastType: .warning)
+            AppToastView.shared.showToast(message: LocalizationSystem.sharedInstance.localizedStringForKey(key: "PleaseEnterDescription", comment: ""), toastType: .warning)
         }else{
             var priority = "low"
             switch prioritySegment.selectedSegmentIndex{
@@ -64,12 +67,22 @@ class AddNewTaskVC: UIViewController {
     
     // MARK: - FUNCTIONS
     func configView(){
+        pageTitle.text = LocalizationSystem.sharedInstance.localizedStringForKey(key: "AddNewTask", comment: "")
+        titleField.placeholder = LocalizationSystem.sharedInstance.localizedStringForKey(key: "Title", comment: "")
+        descField.placeholder = LocalizationSystem.sharedInstance.localizedStringForKey(key: "Description", comment: "")
+        priorityTitle.text = LocalizationSystem.sharedInstance.localizedStringForKey(key: "TaskPriority", comment: "")
+        dateTitle.text = LocalizationSystem.sharedInstance.localizedStringForKey(key: "SelectDueDate", comment: "")
+        deleteButton.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "Delete", comment: ""), for: .normal)
+        prioritySegment.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "Low", comment: ""), forSegmentAt: 0)
+        prioritySegment.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "Medium", comment: ""), forSegmentAt: 1)
+        prioritySegment.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "High", comment: ""), forSegmentAt: 2)
+
         dueDatePicker.minimumDate = Date()
         deleteButton.isHidden = true
-        addButton.setTitle("Add", for: .normal)
+        addButton.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "Add", comment: ""), for: .normal)
         if let data = existingData{
             deleteButton.isHidden = false
-            addButton.setTitle("Update", for: .normal)
+            addButton.setTitle(LocalizationSystem.sharedInstance.localizedStringForKey(key: "Update", comment: ""), for: .normal)
             titleField.text = data.title
             descField.text = data.desc
             switch data.priority{

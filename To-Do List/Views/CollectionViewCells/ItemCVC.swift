@@ -22,7 +22,7 @@ class ItemCVC: UICollectionViewCell {
     func setCellData(data:TaskModel){
         itemTitle.text = data.title
         itemDesc.text = data.desc
-        itemDueDate.text = data.dueDate
+        itemDueDate.text = LocalizationSystem.sharedInstance.localizedStringForKey(key: "DueDate", comment: "") + data.dueDate
         itemPriority.text = data.priority.capitalized
         let priority = TaskPriority(rawValue: data.priority) ?? .low
         switch priority {

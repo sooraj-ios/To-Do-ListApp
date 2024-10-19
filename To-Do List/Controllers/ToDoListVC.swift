@@ -10,7 +10,8 @@ import UIKit
 class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate, UICollectionViewDropDelegate{
     // MARK: - IBOUTLETS
     @IBOutlet weak var itemsCV: UICollectionView!
-
+    @IBOutlet weak var languageSelectionButton: UIButton!
+    
     // MARK: - VARIABLES AND CONSTANTS
     var viewModel: ToDoListVM = ToDoListVM()
     let activityIndicator = ActivityIndicator()
@@ -37,7 +38,7 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             }
             CoreDataManager.shared.updateAllTaskIndexes(currentArray: self.toDoItemsArray)
             self.itemsCV.reloadData()
-            AppToastView.shared.showToast(message: "Task added successfully!", toastType: .success)
+            AppToastView.shared.showToast(message: LocalizationSystem.sharedInstance.localizedStringForKey(key: "TaskAddedSuccessfully", comment: ""), toastType: .success)
         }
         self.present(nextVC, animated: true)
     }
@@ -45,6 +46,9 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
 
     // MARK: - FUNCTIONS
     func configView(){
+        let currentLanguage = UserData.shared.currentLanguage
+        languageSelectionButton.setTitle(currentLanguage.capitalized, for: .normal)
+        setUpDropDown()
         ItemCVC.register(for: itemsCV)
         itemsCV.delegate = self
         itemsCV.dataSource = self
@@ -84,6 +88,29 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                 self?.itemsCV.reloadData()
             }
         }
+    }
+
+    func setUpDropDown(){
+        let actionClosure = { (action: UIAction) in
+            switch action.title {
+            case "Spanish":
+                LocalizationSystem.sharedInstance.setLanguage(languageCode: "es")
+                UserData.shared.currentLanguage = "es"
+                self.languageSelectionButton.setTitle("Es", for: .normal)
+            default:
+                LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
+                UserData.shared.currentLanguage = "en"
+                self.languageSelectionButton.setTitle("En", for: .normal)
+            }
+            self.viewDidLoad()
+            self.viewWillAppear(true)
+        }
+        var menuChildren: [UIMenuElement] = []
+        for language in ["English","Spanish"] {
+            menuChildren.append(UIAction(title: language, handler: actionClosure))
+        }
+        languageSelectionButton.menu = UIMenu(options: .displayInline, children: menuChildren)
+        languageSelectionButton.showsMenuAsPrimaryAction = true
     }
 
     // MARK: - COLLECTION VIEWS
@@ -175,13 +202,13 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             }
             CoreDataManager.shared.updateAllTaskIndexes(currentArray: self.toDoItemsArray)
             self.itemsCV.reloadData()
-            AppToastView.shared.showToast(message: "Task removed successfully!", toastType: .success)
+            AppToastView.shared.showToast(message: LocalizationSystem.sharedInstance.localizedStringForKey(key: "TaskRemovedSuccessfully", comment: ""), toastType: .success)
         }
         nextVC.existingData = toDoItemsArray[indexPath.item]
         nextVC.updatedClosure = { data in
             self.toDoItemsArray[indexPath.item] = data
             self.itemsCV.reloadData()
-            AppToastView.shared.showToast(message: "Task updated successfully!", toastType: .success)
+            AppToastView.shared.showToast(message: LocalizationSystem.sharedInstance.localizedStringForKey(key: "TaskUpdatedSuccessfully", comment: ""), toastType: .success)
         }
         self.present(nextVC, animated: true)
     }
