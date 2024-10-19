@@ -284,6 +284,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="6tM-Am-8we" id="hk3-TV-P7t"/>
                         <outlet property="deleteButton" destination="oll-EJ-bov" id="TNV-kQ-ZvT"/>
                         <outlet property="descField" destination="dzD-hX-Ac3" id="1UL-Yp-o7w"/>
                         <outlet property="dueDatePicker" destination="SIH-2O-8DO" id="L0A-dH-adp"/>

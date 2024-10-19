@@ -15,7 +15,7 @@ class ToDoListVM {
 
     func fetchTasks(){
         let tasks = CoreDataManager.shared.fetchTasks()
-        let convertedTask = tasks.map({ TaskModel(index: $0.index, title: $0.title ?? "", desc: $0.desc ?? "", dueDate: $0.dueDate ?? "", priority: $0.priority ?? "")})
+        let convertedTask = tasks.map({ TaskModel(id: $0.id ?? "", index: $0.index, title: $0.title ?? "", desc: $0.desc ?? "", dueDate: $0.dueDate ?? "", priority: $0.priority ?? "")})
         taskItems.value = convertedTask.sorted(by: {$0.index < $1.index})
     }
 }

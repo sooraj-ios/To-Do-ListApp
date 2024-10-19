@@ -46,12 +46,40 @@ class CoreDataManager {
         }
     }
 
-    // MARK: - Delete Task
-    func deleteTask(task: ToDoList) {
+    // MARK: - Delete Task by Title
+    func deleteTask(id: String) {
         let context = persistentContainer.viewContext
-        context.delete(task)
-        saveContext()
-        NotificationManager.shared.cancelTaskNotification(task: task)
+        let fetchRequest: NSFetchRequest<ToDoList> = ToDoList.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            let tasks = try context.fetch(fetchRequest)
+            for task in tasks {
+                context.delete(task)
+                // Cancel notifications for the deleted task
+                NotificationManager.shared.cancelTaskNotification(task: task)
+            }
+            saveContext()
+        } catch {
+            print("Failed to fetch or delete tasks: \(error)")
+        }
+    }
+
+    func updateTask(id: String, newTitle: String, newDescription: String, newDueDate: String, newPriority: String, index:Int64) {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<ToDoList> = ToDoList.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            let tasks = try context.fetch(fetchRequest)
+            if let task = tasks.first {
+                task.title = newTitle
+                task.desc = newDescription
+                task.dueDate = newDueDate
+                task.priority = newPriority
+                saveContext()
+            }
+        } catch {
+            print("Failed to fetch or update task: \(error)")
+        }
     }
 
     // MARK: - Update All Task Indexes

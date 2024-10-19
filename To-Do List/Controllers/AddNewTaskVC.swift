@@ -14,9 +14,12 @@ class AddNewTaskVC: UIViewController {
     @IBOutlet weak var prioritySegment: UISegmentedControl!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     @IBOutlet weak var deleteButton: UIButton!
-    
+    @IBOutlet weak var addButton: UIButton!
+
     // MARK: - VARIABLES AND CONSTANTS
     var dataClosure: ((TaskModel)->())!
+    var deletedClosure: (()->())!
+    var updatedClosure: ((TaskModel)->())!
     var existingData:TaskModel?
 
     // MARK: - LOADING VIEW CONTROLLER
@@ -43,21 +46,30 @@ class AddNewTaskVC: UIViewController {
             default:
                 priority = "low"
             }
-            dataClosure(TaskModel(index: 0, title: titleField.text ?? "", desc: descField.text ?? "", dueDate: DateToString(date: dueDatePicker.date), priority: priority))
+            if let data = existingData{
+                CoreDataManager.shared.updateTask(id: data.id, newTitle: titleField.text ?? "", newDescription: descField.text ?? "", newDueDate: DateToString(date: dueDatePicker.date), newPriority: priority, index: data.index)
+                updatedClosure(TaskModel(id: data.id, index: data.index, title: titleField.text ?? "", desc: descField.text ?? "", dueDate: DateToString(date: dueDatePicker.date), priority: priority))
+            }else{
+                dataClosure(TaskModel(id: UUID().uuidString, index: 0, title: titleField.text ?? "", desc: descField.text ?? "", dueDate: DateToString(date: dueDatePicker.date), priority: priority))
+            }
             self.dismiss(animated: true)
         }
     }
 
     @IBAction func deleteAction(_ sender: UIButton) {
-
+        CoreDataManager.shared.deleteTask(id: existingData?.id ?? "")
+        deletedClosure()
+        self.dismiss(animated: true)
     }
     
     // MARK: - FUNCTIONS
     func configView(){
         dueDatePicker.minimumDate = Date()
         deleteButton.isHidden = true
+        addButton.setTitle("Add", for: .normal)
         if let data = existingData{
             deleteButton.isHidden = false
+            addButton.setTitle("Update", for: .normal)
             titleField.text = data.title
             descField.text = data.desc
             switch data.priority{

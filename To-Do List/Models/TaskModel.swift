@@ -6,6 +6,7 @@
 //
 
 struct TaskModel : Decodable{
+    var id: String
     var index: Int64
     var title: String
     var desc: String

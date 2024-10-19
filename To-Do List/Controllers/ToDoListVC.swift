@@ -37,6 +37,7 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             }
             CoreDataManager.shared.updateAllTaskIndexes(currentArray: self.toDoItemsArray)
             self.itemsCV.reloadData()
+            AppToastView.shared.showToast(message: "Task added successfully!", toastType: .success)
         }
         self.present(nextVC, animated: true)
     }
@@ -167,7 +168,21 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         if let presentationController = nextVC.presentationController as? UISheetPresentationController {
             presentationController.detents = [.medium()]
         }
+        nextVC.deletedClosure = {
+            self.toDoItemsArray.remove(at: indexPath.item)
+            for i in 0..<self.toDoItemsArray.count{
+                self.toDoItemsArray[i].index = Int64(i)
+            }
+            CoreDataManager.shared.updateAllTaskIndexes(currentArray: self.toDoItemsArray)
+            self.itemsCV.reloadData()
+            AppToastView.shared.showToast(message: "Task removed successfully!", toastType: .success)
+        }
         nextVC.existingData = toDoItemsArray[indexPath.item]
+        nextVC.updatedClosure = { data in
+            self.toDoItemsArray[indexPath.item] = data
+            self.itemsCV.reloadData()
+            AppToastView.shared.showToast(message: "Task updated successfully!", toastType: .success)
+        }
         self.present(nextVC, animated: true)
     }
 }
