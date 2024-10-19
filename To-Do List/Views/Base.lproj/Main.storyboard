@@ -241,7 +241,7 @@
                                             <constraint firstAttribute="height" constant="10" id="2f4-m4-Vtp"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tM-Am-8we">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tM-Am-8we" customClass="RoundedButton" customModule="To_Do_List" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="263.33333333333331" width="333" height="34"/>
                                         <color key="backgroundColor" name="AppPrimaryColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -252,6 +252,20 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oll-EJ-bov" customClass="RoundedButton" customModule="To_Do_List" customModuleProvider="target">
+                                <rect key="frame" x="318" y="82.666666666666671" width="65" height="25"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Vd3-LH-zMt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteAction:" destination="y9q-yt-2h0" eventType="touchUpInside" id="aNp-ET-JXV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Po4-PK-Cul"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -263,11 +277,14 @@
                             <constraint firstItem="5HA-Dc-IVj" firstAttribute="top" secondItem="XCD-Yh-OUB" secondAttribute="bottom" id="RaS-qH-9fu"/>
                             <constraint firstItem="5HA-Dc-IVj" firstAttribute="leading" secondItem="RQk-wu-D71" secondAttribute="leading" id="Rka-ka-gRr"/>
                             <constraint firstItem="XCD-Yh-OUB" firstAttribute="leading" secondItem="Po4-PK-Cul" secondAttribute="leading" constant="20" id="ab4-ap-Zsd"/>
+                            <constraint firstItem="Po4-PK-Cul" firstAttribute="trailing" secondItem="oll-EJ-bov" secondAttribute="trailing" constant="10" id="apV-Xk-Aei"/>
+                            <constraint firstItem="oll-EJ-bov" firstAttribute="centerY" secondItem="XCD-Yh-OUB" secondAttribute="centerY" id="fli-xZ-CKB"/>
                             <constraint firstAttribute="trailing" secondItem="5HA-Dc-IVj" secondAttribute="trailing" id="jmN-Pw-XTc"/>
                             <constraint firstItem="XFZ-sX-YU6" firstAttribute="top" secondItem="5HA-Dc-IVj" secondAttribute="bottom" constant="30" id="kF4-Wh-A8z"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="oll-EJ-bov" id="TNV-kQ-ZvT"/>
                         <outlet property="descField" destination="dzD-hX-Ac3" id="1UL-Yp-o7w"/>
                         <outlet property="dueDatePicker" destination="SIH-2O-8DO" id="L0A-dH-adp"/>
                         <outlet property="prioritySegment" destination="qmT-MX-49a" id="pGH-1r-DWW"/>
@@ -290,6 +307,9 @@
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -31,6 +31,7 @@ class CoreDataManager {
         task.priority = priority
         task.index = index
         saveContext()
+        NotificationManager.shared.scheduleTaskNotification(task: task)
     }
 
     // MARK: - Fetch All Tasks
@@ -50,6 +51,7 @@ class CoreDataManager {
         let context = persistentContainer.viewContext
         context.delete(task)
         saveContext()
+        NotificationManager.shared.cancelTaskNotification(task: task)
     }
 
     // MARK: - Update All Task Indexes

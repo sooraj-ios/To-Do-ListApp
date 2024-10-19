@@ -13,9 +13,11 @@ class AddNewTaskVC: UIViewController {
     @IBOutlet weak var descField: UITextField!
     @IBOutlet weak var prioritySegment: UISegmentedControl!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
+    @IBOutlet weak var deleteButton: UIButton!
     
     // MARK: - VARIABLES AND CONSTANTS
     var dataClosure: ((TaskModel)->())!
+    var existingData:TaskModel?
 
     // MARK: - LOADING VIEW CONTROLLER
     override func viewDidLoad() {
@@ -46,9 +48,36 @@ class AddNewTaskVC: UIViewController {
         }
     }
 
+    @IBAction func deleteAction(_ sender: UIButton) {
+
+    }
+    
     // MARK: - FUNCTIONS
     func configView(){
         dueDatePicker.minimumDate = Date()
+        deleteButton.isHidden = true
+        if let data = existingData{
+            deleteButton.isHidden = false
+            titleField.text = data.title
+            descField.text = data.desc
+            switch data.priority{
+            case "low":
+                prioritySegment.selectedSegmentIndex = 0
+            case "medium":
+                prioritySegment.selectedSegmentIndex = 1
+            case "high":
+                prioritySegment.selectedSegmentIndex = 2
+            default:
+                prioritySegment.selectedSegmentIndex = 0
+            }
+            dueDatePicker.date = convertStringToDate(dateString: data.dueDate)
+        }
+    }
+
+    func convertStringToDate(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
+        return dateFormatter.date(from: dateString) ?? Date()
     }
 
     func DateToString(date: Date) -> String {

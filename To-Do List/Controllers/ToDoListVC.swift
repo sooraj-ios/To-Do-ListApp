@@ -154,13 +154,20 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         }
     }
 
-
-
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
         return session.localDragSession != nil
     }
 
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = AppController.shared.addNewTask
+        if let presentationController = nextVC.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()]
+        }
+        nextVC.existingData = toDoItemsArray[indexPath.item]
+        self.present(nextVC, animated: true)
     }
 }
