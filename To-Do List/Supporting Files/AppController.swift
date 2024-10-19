@@ -28,5 +28,9 @@ class AppController {
     var toDoList: ToDoListVC {
        AppStoryBoard.shared.main.instantiateViewController(withIdentifier: "ToDoListVC_id") as? ToDoListVC ?? ToDoListVC()
     }
+
+    var addNewTask: AddNewTaskVC {
+       AppStoryBoard.shared.main.instantiateViewController(withIdentifier: "AddNewTaskVC_id") as? AddNewTaskVC ?? AddNewTaskVC()
+    }
 }
 

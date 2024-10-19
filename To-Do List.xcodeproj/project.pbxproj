@@ -28,6 +28,12 @@
 		71BEF4552CC38E0B00117A44 /* ViewClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEF4542CC38E0B00117A44 /* ViewClasses.swift */; };
 		71BEF4572CC38E2900117A44 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEF4562CC38E2900117A44 /* ViewExtensions.swift */; };
 		71BEF45A2CC38E6E00117A44 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEF4592CC38E6E00117A44 /* Observable.swift */; };
+		71BEF45C2CC3A65D00117A44 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEF45B2CC3A65D00117A44 /* Enumerations.swift */; };
+		71BEF45E2CC3AA7000117A44 /* ApiData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71BEF45D2CC3AA7000117A44 /* ApiData.json */; };
+		71BEF4602CC3AB2C00117A44 /* SyncApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEF45F2CC3AB2C00117A44 /* SyncApiData.swift */; };
+		71BEF4622CC3AC0500117A44 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEF4612CC3AC0500117A44 /* NetworkManager.swift */; };
+		71BEF4642CC3ACAE00117A44 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEF4632CC3ACAE00117A44 /* CoreDataManager.swift */; };
+		71BEF4662CC3BCCF00117A44 /* AddNewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEF4652CC3BCCF00117A44 /* AddNewTaskVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +79,12 @@
 		71BEF4542CC38E0B00117A44 /* ViewClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClasses.swift; sourceTree = "<group>"; };
 		71BEF4562CC38E2900117A44 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		71BEF4592CC38E6E00117A44 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		71BEF45B2CC3A65D00117A44 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
+		71BEF45D2CC3AA7000117A44 /* ApiData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApiData.json; sourceTree = "<group>"; };
+		71BEF45F2CC3AB2C00117A44 /* SyncApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncApiData.swift; sourceTree = "<group>"; };
+		71BEF4612CC3AC0500117A44 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		71BEF4632CC3ACAE00117A44 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		71BEF4652CC3BCCF00117A44 /* AddNewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +172,11 @@
 				71BEF4502CC38DC200117A44 /* AppActivityIndicator.swift */,
 				71BEF4522CC38DE100117A44 /* AppToastView.swift */,
 				71BEF4592CC38E6E00117A44 /* Observable.swift */,
+				71BEF45B2CC3A65D00117A44 /* Enumerations.swift */,
+				71BEF45D2CC3AA7000117A44 /* ApiData.json */,
+				71BEF45F2CC3AB2C00117A44 /* SyncApiData.swift */,
+				71BEF4612CC3AC0500117A44 /* NetworkManager.swift */,
+				71BEF4632CC3ACAE00117A44 /* CoreDataManager.swift */,
 				71AB7C4B2CC3758500AF8C35 /* Assets.xcassets */,
 				71AB7C502CC3758500AF8C35 /* Info.plist */,
 				71AB7C482CC3758300AF8C35 /* To_Do_List.xcdatamodeld */,
@@ -197,6 +214,7 @@
 			children = (
 				71AB7C432CC3758300AF8C35 /* LaunchVC.swift */,
 				71AB7C772CC37CFF00AF8C35 /* ToDoListVC.swift */,
+				71BEF4652CC3BCCF00117A44 /* AddNewTaskVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -331,6 +349,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71BEF45E2CC3AA7000117A44 /* ApiData.json in Resources */,
 				71AB7C7C2CC37D9800AF8C35 /* ItemCVC.xib in Resources */,
 				71AB7C4C2CC3758500AF8C35 /* Assets.xcassets in Resources */,
 				71AB7C472CC3758300AF8C35 /* Base in Resources */,
@@ -358,13 +377,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71BEF4622CC3AC0500117A44 /* NetworkManager.swift in Sources */,
 				71BEF4532CC38DE100117A44 /* AppToastView.swift in Sources */,
 				71BEF45A2CC38E6E00117A44 /* Observable.swift in Sources */,
+				71BEF4642CC3ACAE00117A44 /* CoreDataManager.swift in Sources */,
+				71BEF4662CC3BCCF00117A44 /* AddNewTaskVC.swift in Sources */,
 				71AB7C832CC3865400AF8C35 /* CollectionViewExtensions.swift in Sources */,
 				71BEF4552CC38E0B00117A44 /* ViewClasses.swift in Sources */,
+				71BEF4602CC3AB2C00117A44 /* SyncApiData.swift in Sources */,
 				71AB7C442CC3758300AF8C35 /* LaunchVC.swift in Sources */,
 				71AB7C872CC38A0500AF8C35 /* TaskModel.swift in Sources */,
 				71AB7C402CC3758300AF8C35 /* AppDelegate.swift in Sources */,
+				71BEF45C2CC3A65D00117A44 /* Enumerations.swift in Sources */,
 				71AB7C782CC37CFF00AF8C35 /* ToDoListVC.swift in Sources */,
 				71AB7C7D2CC37D9800AF8C35 /* ItemCVC.swift in Sources */,
 				71BEF4572CC38E2900117A44 /* ViewExtensions.swift in Sources */,

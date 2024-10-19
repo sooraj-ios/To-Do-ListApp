@@ -1,0 +1,23 @@
+[
+    {
+        "index": 1,
+        "title": "Buy groceries",
+        "desc": "Buy milk, bread, and eggs",
+        "dueDate": "2024-10-19 06:00 PM",
+        "priority": "low"
+    },
+    {
+        "index": 2,
+        "title": "Meeting",
+        "desc": "Client meeting",
+        "dueDate": "2024-10-19 05:00 PM",
+        "priority": "high"
+    },
+    {
+        "index": 3,
+        "title": "Call Jinu",
+        "desc": "Call Jinu for work details",
+        "dueDate": "2024-10-19 08:00 PM",
+        "priority": "medium"
+    }
+]

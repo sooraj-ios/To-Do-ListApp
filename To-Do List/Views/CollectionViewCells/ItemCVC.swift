@@ -20,9 +20,18 @@ class ItemCVC: UICollectionViewCell {
     }
 
     func setCellData(data:TaskModel){
-        itemTitle.text = data.title + "with Index \(data.index)"
+        itemTitle.text = data.title
         itemDesc.text = data.desc
         itemDueDate.text = data.dueDate
-        itemPriority.text = data.priority
+        itemPriority.text = data.priority.capitalized
+        let priority = TaskPriority(rawValue: data.priority) ?? .low
+        switch priority {
+        case .high:
+            itemPriorityView.backgroundColor = UIColor.systemRed.withAlphaComponent(0.3)
+        case .medium:
+            itemPriorityView.backgroundColor = UIColor.systemOrange.withAlphaComponent(0.3)
+        case .low:
+            itemPriorityView.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.3)
+        }
     }
 }

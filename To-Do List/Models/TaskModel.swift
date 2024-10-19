@@ -5,7 +5,7 @@
 //  Created by Sooraj R on 19/10/24.
 //
 
-struct TaskModel {
+struct TaskModel : Decodable{
     var index: Int64
     var title: String
     var desc: String

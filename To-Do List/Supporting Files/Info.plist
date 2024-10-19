@@ -6,6 +6,17 @@
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
+        <key>BGTaskSchedulerPermittedIdentifiers</key>
+        <array>
+            <string>com.dev.refresh</string>
+        </array>
+        <key>UIBackgroundModes</key>
+        <array>
+            <string>fetch</string>
+            <string>remote-notification</string>
+        </array>
+        <key>NSUserTrackingUsageDescription</key>
+        <string>This app needs access to your notifications to remind you of tasks.</string>
 		<key>UISceneConfigurations</key>
 		<dict>
 			<key>UIWindowSceneSessionRoleApplication</key>

@@ -14,13 +14,7 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     // MARK: - VARIABLES AND CONSTANTS
     var viewModel: ToDoListVM = ToDoListVM()
     let activityIndicator = ActivityIndicator()
-    var toDoItemsArray:[TaskModel] = [
-        TaskModel(index: 0, title: "Title 1", desc: "desc 1", dueDate: "Due Date 1", priority: "priority 1"),
-        TaskModel(index: 1, title: "Title 2", desc: "desc 2", dueDate: "Due Date 2", priority: "priority 2"),
-        TaskModel(index: 2, title: "Title 3", desc: "desc 3", dueDate: "Due Date 3", priority: "priority 3"),
-        TaskModel(index: 3, title: "Title 4", desc: "desc 4", dueDate: "Due Date 4", priority: "priority 4"),
-        TaskModel(index: 4, title: "Title 5", desc: "desc 5", dueDate: "Due Date 5", priority: "priority 5")
-    ]
+    var toDoItemsArray:[TaskModel] = []
 
     // MARK: - LOADING VIEW CONTROLLER
     override func viewDidLoad() {
@@ -28,6 +22,25 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         configView()
         bindViewModel()
     }
+
+    // MARK: - BUTTON ACTIONS
+    @IBAction func addNewAction(_ sender: UIButton) {
+        let nextVC = AppController.shared.addNewTask
+        if let presentationController = nextVC.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()]
+        }
+        nextVC.dataClosure = { data in
+            CoreDataManager.shared.createTask(title: data.title, desc: data.desc, dueDate: data.dueDate, priority: data.priority, index: 0)
+            self.toDoItemsArray.insert(data, at: 0)
+            for i in 0..<self.toDoItemsArray.count{
+                self.toDoItemsArray[i].index = Int64(i)
+            }
+            CoreDataManager.shared.updateAllTaskIndexes(currentArray: self.toDoItemsArray)
+            self.itemsCV.reloadData()
+        }
+        self.present(nextVC, animated: true)
+    }
+    
 
     // MARK: - FUNCTIONS
     func configView(){
@@ -37,6 +50,7 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         itemsCV.dragDelegate = self
         itemsCV.dropDelegate = self
         itemsCV.dragInteractionEnabled = true
+        viewModel.fetchTasks()
     }
 
     func bindViewModel() {
@@ -131,6 +145,7 @@ class ToDoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                         self.toDoItemsArray[i].index = Int64(i)
                     }
                     self.itemsCV.reloadData()
+                    CoreDataManager.shared.updateAllTaskIndexes(currentArray: self.toDoItemsArray)
                 })
                 collectionView.deleteItems(at: [sourceIndexPath])
                 collectionView.insertItems(at: [destinationIndexPath])
