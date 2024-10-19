@@ -6,8 +6,9 @@
 //
 
 struct TaskModel {
-    let title: String
-    let desc: String
-    let dueDate: String
-    let priority: String
+    var index: Int64
+    var title: String
+    var desc: String
+    var dueDate: String
+    var priority: String
 }

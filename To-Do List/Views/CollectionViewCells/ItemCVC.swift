@@ -8,10 +8,21 @@
 import UIKit
 
 class ItemCVC: UICollectionViewCell {
-
+    @IBOutlet weak var itemTitle: UILabel!
+    @IBOutlet weak var itemDesc: UILabel!
+    @IBOutlet weak var itemDueDate: UILabel!
+    @IBOutlet weak var itemPriority: UILabel!
+    @IBOutlet weak var itemPriorityView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.backgroundColor = .clear
     }
 
+    func setCellData(data:TaskModel){
+        itemTitle.text = data.title + "with Index \(data.index)"
+        itemDesc.text = data.desc
+        itemDueDate.text = data.dueDate
+        itemPriority.text = data.priority
+    }
 }
